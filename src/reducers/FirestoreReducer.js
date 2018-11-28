@@ -1,34 +1,34 @@
 import Immutable from 'seamless-immutable';
-import { DatabaseTypes } from '../types';
+import { FirestoreTypes } from '../types';
 
 const initialState = Immutable({
   loading: false,
-  database: null,
+  payload: null,
   success: false,
   error: false,
 });
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case DatabaseTypes.GET_DATABASE:
+    case FirestoreTypes.GET_COLLECTION:
       return state.merge({
         loading: true,
         success: false,
         error: false,
       });
 
-    case DatabaseTypes.GET_DATABASE_SUCCESS:
+    case FirestoreTypes.GET_COLLECTION_SUCCESS:
       return state.merge({
         loading: false,
-        database: action.database,
+        payload: action.collectionSnapshot,
         success: true,
         error: false,
       });
 
-    case DatabaseTypes.GET_DATABASE_ERROR:
+    case FirestoreTypes.GET_COLLECTION_ERROR:
       return state.merge({
         loading: false,
-        database: null,
+        payload: null,
         success: false,
         error: true,
       });

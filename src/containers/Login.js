@@ -7,10 +7,14 @@ import {
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { AuthActions } from '../actions'
+import { AuthActions, FirestoreActions } from '../actions'
 import { BaseStyles } from '../themes'
 
 class Login extends Component {
+
+  componentDidMount () {
+    //this.props.getCollection('myCollection')
+  }
 
   componentDidUpdate (prevProps) {
     const { loggedIn, navigation } = this.props
@@ -37,6 +41,7 @@ class Login extends Component {
 Login.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   login: PropTypes.func.isRequired,
+  getCollection: PropTypes.func.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
@@ -45,10 +50,12 @@ Login.propTypes = {
 const mapStateToProps = state => ({
   loading: state.auth.loading,
   loggedIn: state.auth.loggedIn,
+  payload: state.firestore.payload,
 })
 
 const mapDispatchToProps = dispatch => ({
-  login: (email, password) => dispatch(AuthActions.login(email, password))
+  login: (email, password) => dispatch(AuthActions.login(email, password)),
+  getCollection: (collection) => dispatch(FirestoreActions.getCollection(collection))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
