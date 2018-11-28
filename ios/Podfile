@@ -9,8 +9,7 @@ target 'reactNativeApp' do
   pod 'Firebase/Core', '~> 5.11.0'
   pod 'Firebase/Auth', '~> 5.11.0'
   pod 'Firebase/Database', '~> 5.11.0'
-
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  pod 'Firebase/Firestore', '~> 5.11.0'
 
   target 'reactNativeAppTests' do
     inherit! :search_paths
