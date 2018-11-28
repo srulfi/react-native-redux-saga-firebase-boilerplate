@@ -12,10 +12,6 @@ import { BaseStyles } from '../themes'
 
 class Login extends Component {
 
-  componentDidMount () {
-    //this.props.getCollection('myCollection')
-  }
-
   componentDidUpdate (prevProps) {
     const { loggedIn, navigation } = this.props
 
