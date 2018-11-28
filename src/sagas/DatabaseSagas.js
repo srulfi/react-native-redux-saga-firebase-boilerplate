@@ -2,11 +2,11 @@ import { put } from 'redux-saga/effects';
 
 import { DatabaseTypes } from '../types';
 
-import FirebaseService from '../services/FirebaseService';
+import DatabaseService from '../services/DatabaseService';
 
-export function* getDatabase() {
+export function * getDatabase (action) {
   try {
-    const database = yield FirebaseService.getDatabase()
+    const database = yield DatabaseService.getDatabase()
 
     if (database) {
       yield put({ type: DatabaseTypes.GET_DATABASE_SUCCESS, database });
